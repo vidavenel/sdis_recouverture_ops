@@ -21,4 +21,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::prefix('parametre')->group(function () {
+    Route::resource('centre', \App\Http\Controllers\Parametre\CentreController::class);
+    Route::resource('groupement', \App\Http\Controllers\Parametre\GroupementController::class);
+});
+
 require __DIR__.'/auth.php';

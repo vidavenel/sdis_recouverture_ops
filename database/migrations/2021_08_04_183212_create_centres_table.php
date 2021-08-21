@@ -19,9 +19,9 @@ class CreateCentresTable extends Migration
             $table->string('libelle_long')->nullable();
             $table->string('description')->nullable();
 
-            $table->foreignId('groupement_id');
+            $table->foreignId('groupement_id')->nullable();
             $table->foreign('groupement_id')->references('id')->on('groupements');
-            
+
             $table->timestamps();
         });
     }

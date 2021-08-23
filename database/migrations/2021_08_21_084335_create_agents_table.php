@@ -22,6 +22,16 @@ class CreateAgentsTable extends Migration
 
             $table->timestamps();
         });
+
+        Schema::create('agent_centre', function (Blueprint $table) {
+            $table->foreignId('agent_id');
+            $table->foreignId('centre_id');
+
+            $table->foreign('agent_id')->references('id')->on('agents');
+            $table->foreign('centre_id')->references('id')->on('centres');
+
+            $table->primary(['agent_id', 'centre_id']);
+        });
     }
 
     /**
@@ -31,6 +41,7 @@ class CreateAgentsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('agent_centre');
         Schema::dropIfExists('agents');
     }
 }

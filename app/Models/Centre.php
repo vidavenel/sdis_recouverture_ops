@@ -29,4 +29,9 @@ class Centre extends Model
     {
         return $this->belongsToMany(TypeVehicule::class);
     }
+
+    public function agents()
+    {
+        return $this->belongsToMany(Agent::class);
+    }
 }

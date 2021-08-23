@@ -22,7 +22,7 @@ class AgentFactory extends Factory
     public function definition()
     {
         return [
-            'matricule' => $this->faker->word,
+            'matricule' => $this->faker->unique()->word,
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName
         ];

@@ -40,6 +40,8 @@ class CreateCompetencesTable extends Migration
             $table->foreign('type_vehicule_id')->references('id')->on('type_vehicules');
 
             $table->primary(['competence_id', 'type_vehicule_id']);
+
+            $table->tinyInteger('nb_agent')->default(1);
         });
     }
 

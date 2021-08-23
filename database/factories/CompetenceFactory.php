@@ -22,7 +22,8 @@ class CompetenceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'libelle' => $this->faker->unique->word,
+            'description' => $this->faker->optional->sentence
         ];
     }
 }

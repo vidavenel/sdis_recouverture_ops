@@ -22,7 +22,9 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'libelle_court' => $this->faker->unique->word,
+            'libelle_long' => $this->faker->optional->word,
+            'description' => $this->faker->optional->sentence
         ];
     }
 }

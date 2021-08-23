@@ -17,10 +17,15 @@ class CreateGradesTable extends Migration
             $table->id();
 
             $table->string('libelle_court');
-            $table->string('lieblle_long')->nullable();
+            $table->string('libelle_long')->nullable();
             $table->text('description')->nullable();
 
             $table->timestamps();
+        });
+
+        Schema::table('agents', function (Blueprint $table) {
+            $table->foreignId('grade_id')->after('prenom')->nullable();
+            $table->foreign('grade_id')->references('id')->on('grades');
         });
     }
 
@@ -31,6 +36,10 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
+        Schema::table('agents', function (Blueprint $table) {
+            $table->dropForeign(['grade_id']);
+            $table->dropColumn('grade_id');
+        });
         Schema::dropIfExists('grades');
     }
 }

@@ -31,6 +31,16 @@ class CreateCompetencesTable extends Migration
 
             $table->primary(['agent_id', 'competence_id']);
         });
+
+        Schema::create('competence_type_vehicule', function (Blueprint $table) {
+            $table->foreignId('competence_id');
+            $table->foreignId('type_vehicule_id');
+
+            $table->foreign('competence_id')->references('id')->on('competences');
+            $table->foreign('type_vehicule_id')->references('id')->on('type_vehicules');
+
+            $table->primary(['competence_id', 'type_vehicule_id']);
+        });
     }
 
     /**
@@ -41,6 +51,7 @@ class CreateCompetencesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('agent_competence');
+        Schema::dropIfExists('competence_type_vehicule');
         Schema::dropIfExists('competences');
     }
 }

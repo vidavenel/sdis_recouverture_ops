@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
+ * Agent physique detenteur d'un grade et de plusieurs competences
  * @property-read int $id
  * @property string $matricule
  * @property string $nom
